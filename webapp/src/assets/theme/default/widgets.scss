@@ -1,0 +1,40 @@
+@import './../../../../node_modules/braft-editor/dist/index.css';
+
+
+.modal-overlay.active {
+    opacity: 1;
+    background: rgba(0,0,0,0.2);
+    visibility: visible;
+}
+
+.modal-overlay {
+    visibility: hidden;
+    position: absolute;
+    max-width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    background: #000;
+    z-index: 9;
+    -webkit-transition: visibility 0 linear .4s,opacity .4s cubic-bezier(.4,0,.2,1);
+    transition: visibility 0 linear .4s,opacity .4s cubic-bezier(.4,0,.2,1);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.modal { height: 100%; }
+
+.editor-wrapper {
+    border: 1px solid #e0e0e0; border-radius: 3px;
+    max-height: 460px; overflow-y: auto; padding: 10px; font-size: 12px;
+    .bf-controlbar { display: none; }
+    .bf-content { height: unset; font-size: 12px; }
+}
+
+.viewer-wrapper {
+    .bf-controlbar { display: none; }
+    .bf-content { height: unset; font-size: 12px; }
+    .public-DraftEditor-content { padding: 0; }
+}

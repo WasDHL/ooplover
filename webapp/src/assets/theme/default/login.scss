@@ -1,0 +1,40 @@
+.login-page {
+    width: 100%; height: 100%; position: relative;
+
+    .btn { cursor: pointer; display: inline-block; padding: 4px 8px; color: #333; border-radius: 2px; margin: 0 20px; }
+    .btn:hover { background: #e0e0e0; }
+}
+
+.login-panel {
+    max-width: 400px;
+    // position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto;
+    display: inline-block;
+}
+
+.form-row { margin: 10px 4px; }
+.form-ipt { 
+    display: inline-block; width: 200px; text-align: center; 
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+    // -webkit-user-select: none;
+    -moz-user-focus: none;
+    -moz-user-select: none;
+    -webkit-appearance:none;
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    outline: none;
+}
+
+.form-ipt::-webkit-input-placeholder {
+    // color: red;
+    text-align: center;
+}
+.form-ipt:-moz-placeholder {
+    // color: red;
+}
+.form-ipt:-ms-input-placeholder {
+    // color: red;
+}
+.login-recommend {
+    position: absolute; bottom: 0; width: 100%;
+    font-size: 12px; color: #777; text-align: center;
+}

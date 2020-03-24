@@ -1,0 +1,1 @@
+export const STATE = { DELETED: 0, NORMAL: 1 };
