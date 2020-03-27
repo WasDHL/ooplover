@@ -53,8 +53,8 @@ export default function RootModule (props) {
                 </Switch>
             </HashRouter>
 
-            <span id="J_appCollapseBtn" className="collapse-btn" style={{ 'display': status == 'expanded' ? 'block' : 'none' }} onClick={collapse}>Collapse BTN</span>
-            <div id="J_appHideModel" className="hide-model" style={{ 'display': status !== 'expanded' ? 'block' : 'none' }}>
+            <span id="J_appCollapseBtn" className="collapse-btn" style={{ 'display': status !== 'collapsed' ? 'block' : 'none' }} onClick={collapse}>Collapse BTN</span>
+            <div id="J_appHideModel" className="hide-model" style={{ 'display': status === 'collapsed' ? 'block' : 'none' }}>
                 <div>测试页面</div>
                 <div>面向对象 爱好者</div>
                 <div>作者: Harry</div>
