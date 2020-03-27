@@ -109,4 +109,21 @@ div:-webkit-autofill, input:-webkit-autofill, textarea:-webkit-autofill, select:
     -webkit-box-shadow: 0 0 0px 1000px rgb(218,238,234) inset;
     -webkit-text-fill-color: rgba(102, 102, 102, 1) !important;
     outline: none;
+}
+
+.message-item {
+    padding-left: 40px;
+    position: relative;
+
+    .message-avator {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        overflow: hidden;
+        left: 0;
+        top: 13px;
+        // margin-right: 10px;
+        img { height: 100%; width: 100%; }
     }
+}
