@@ -39,6 +39,9 @@ const HomeBodyComponent = function (props) {
                 </div>
 
                 <div className="body-row">
+                    <div style={{'textAlign': 'center'}} onClick={() => props.updateMessageNumLimit && props.updateMessageNumLimit()}>
+                        <i className="fa fa-angle-double-up icon" aria-hidden="true" style={{ fontSize: "12px", color: "#a0a0a0" }}></i>
+                    </div>
                     <div>
                     {
                         props.messageList && props.messageList.map((message, idx) => (
@@ -46,7 +49,7 @@ const HomeBodyComponent = function (props) {
                                 <MessageItem message={message} user={props.userMap && props.userMap[message.sendUserId]}></MessageItem>
                             </div>
                         ))
-                    }   
+                    }
                     </div>
                     <div style={{ marginTop: '20px' }}>
                         <SenderBox />
@@ -62,8 +65,8 @@ const ConnectedHomeBodyComponent = connectDataState(connectViewState(HomeBodyCom
 import { connectInitState, connectAsyncState } from './../common/connect';
 
 export default connectAsyncState(connectInitState(props => {
-    var isLoading = 
-        // props && props.isPullingReceiveMessageList !== false || 
+    var isLoading =
+        // props && props.isPullingReceiveMessageList !== false ||
         props && props.isFetchingUsers !== false;
     return (
         <div>

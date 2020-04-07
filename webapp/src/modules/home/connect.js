@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchDiary, submitDiary, fetchDiaryList, deleteDiary, fetchDiaryDetail } from './../../model/actions/diary';
-import { pullReceiveMessageList, sendMessage } from './../../model/actions/message';
+import { pullReceiveMessageList, sendMessage, updateMessageNumLimit } from './../../model/actions/message';
 
 export const connectViewState = connect(
     ({ viewState, dataState }) => ({
@@ -26,7 +26,8 @@ export const connectViewState = connect(
         delete: (id) => dispatch(deleteDiary(id))
             .then(response => dispatch({ type: 'TOGGLE_DELETE_ALERT', diary: null }))
             .then(response => dispatch(fetchDiaryList())),
-        sendMessage: message => dispatch(sendMessage(message))
+        sendMessage: message => dispatch(sendMessage(message)),
+        updateMessageNumLimit: () => dispatch(updateMessageNumLimit())
     })
 );
 
