@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { SocketApiPath } from './../../apiConfig';
 import { Modal } from './../../widgets/modal';
 import InitialTrigger from './../../components/initialTrigger';
 
@@ -17,10 +18,12 @@ const adimn2Avator = require('./../../assets/avators/admin2.jpg');
 import { connectViewState, connectDataState } from './connect';
 import SenderBox from './senderBox';
 
+import socket from 'socket.io-client';
+
 const HomeBodyComponent = function (props) {
     return (
         <div className="home-page">
-            <div style={{ padding: "30px 20px" }}>
+            <div style={{ padding: "30px 20px", position: 'relative' }}>
                 <i className="fa fa-bars icon" aria-hidden="true" style={{ fontSize: "20px", color: "#a0a0a0" }} onClick={() => props.toggleLeftNav && props.toggleLeftNav()}></i>
                 <span style={{ position: 'absolute', right: '40px', top: '35px', color: '#a0a0a0' }}>晚安说</span>
             </div>
@@ -64,7 +67,23 @@ const ConnectedHomeBodyComponent = connectDataState(connectViewState(HomeBodyCom
 
 import { connectInitState, connectAsyncState } from './../common/connect';
 
+window['newMessageSendedEventBinded'] = false;
+
 export default connectAsyncState(connectInitState(props => {
+    
+
+    if (!window['newMessageSendedEventBinded']) {
+        const io = socket(SocketApiPath);
+
+        io.on('newMessageSended', function (message) {
+            console.log('newMessageSended');
+            console.log(message);
+            props.pullReceiveMessageList && props.pullReceiveMessageList();
+        });
+        window['newMessageSendedEventBinded'] = true;
+    }
+    
+
     var isLoading =
         // props && props.isPullingReceiveMessageList !== false ||
         props && props.isFetchingUsers !== false;

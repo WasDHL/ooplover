@@ -1,5 +1,6 @@
 import { get, getAction, post, postAction } from './api';
 import asyncActionStateTracker from './../../utils/asyncActionStateTracker';
+import Base64 from './../../utils/base64';
 
 const actionMap = {
     pullReceiveMessageList: function () {
@@ -8,14 +9,16 @@ const actionMap = {
             var messageNumLimit = state && state.messageState && state.messageState.messageNumLimit;
             // var response = await get('/diary/list');
             var response = await dispatch(postAction('/message/pullReceive', { numLimit: messageNumLimit || 10 }));
-            response.success && dispatch({ type: 'FETCHED_MESSAGELIST', messageList: response.data || [] });
+            response.success && dispatch({ type: 'FETCHED_MESSAGELIST', messageList: (response.data || []).map(message => Object.assign({}, message, {
+                content: Base64.decode(message.content || '')
+            })) });
             return response.data;
         }
     },
     sendMessage: function (message) {
         return async function (dispatch) {
             var response = await dispatch(postAction('/message/send', { content: message }));
-            response.success && dispatch(pullReceiveMessageList());
+            // response.success && dispatch(pullReceiveMessageList());
             return response.data;
         }
     }
@@ -25,9 +28,9 @@ export const pullReceiveMessageList = asyncActionStateTracker(actionMap['pullRec
 
 export const startHBPull = function () {
     return function (dispatch) {
-        setInterval(function () {
-            dispatch(actionMap['pullReceiveMessageList']());
-        }, 2000);
+        // setInterval(function () {
+        //     dispatch(actionMap['pullReceiveMessageList']());
+        // }, 2000);
     }
 }
 

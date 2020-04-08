@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 
 import Root from './modules';
 import Store from './model';
+
 // import routers from './routers';
 
 // ReactDOM.render(<Router history={hashHistory} routes={routes} />, document.getElementById('root'));
