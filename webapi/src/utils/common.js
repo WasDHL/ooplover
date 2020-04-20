@@ -21,3 +21,15 @@ export const RightJoinArr = function (leftArr, rightArr, objKey) {
 
     return { result: crossResult.cross.concat(crossResult.right), rest: crossResult.left };
 }
+
+export function base64Encode (str) {
+    return Buffer.from(str).toString('base64');
+}
+
+export function base64Decode (str) {
+	return Buffer.from(str, 'base64').toString();
+}
+
+export function strReverse (str) {
+	return str.split("").reverse().join("");
+}

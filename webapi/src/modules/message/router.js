@@ -19,5 +19,6 @@ router.use(function (ctx, next) {
 
 router.post('/send', ctrl.send);
 router.post('/pullReceive', ctrl.pullReceive);
+router.post('/readed', ctrl.readed);
 
 export default router;

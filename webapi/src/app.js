@@ -1,4 +1,5 @@
 'use strict';
+import http from 'http';
 import Koa from 'koa';
 import convert from 'koa-convert';
 import error from 'koa-error';
@@ -9,6 +10,10 @@ import koaBody from 'koa-body';
 
 import jwtKoa from 'koa-jwt';
 import { decodeJWT } from './utils/auth';
+
+// import socket from 'socket.io';
+
+import { connect as socketIOConnect } from './socket';
 
 // const secret = 'QwjoiwjefEjuwdhfHhHPPOWEIsdfjwIEnLEIfeoilDILFJEUhkalidjoUHyewihfYGHjYUhkK';
 const app = new Koa();
@@ -58,6 +63,24 @@ app.use(async function (ctx, next) {
 //路由
 router(app);
 
-app.listen(config.port, function() {
+// app.listen(config.port, function() {
+// 	console.info('listen on', config.port);
+// });
+const server = http.createServer(app.callback());
+
+//挂载socket
+// const io = socket(server);
+
+// global && (global['socketIoInstance'] = io);
+
+socketIOConnect(server);
+
+// io.on('connection', client => {
+// 	console.log('connectioned');
+// });
+
+server.listen(config.port, function() {
 	console.info('listen on', config.port);
 });
+
+
