@@ -3,7 +3,9 @@ const InitialState = {
     editDiaryId: null,
     editDialogToggle: false,
     currentEditDiary: null,
-    currentDeleteDiary: null
+    currentDeleteDiary: null,
+    hideModelVisible: window.localStorage.getItem('DREAM_STATUS'),
+    domWindowVisible: true // 当前窗口是否可见
 };
 
 export default function (state = InitialState, action) {
@@ -28,6 +30,17 @@ export default function (state = InitialState, action) {
             var newState = Object.assign({}, state);
             newState.currentEditDiary = Object.assign({}, newState.currentEditDiary, action.diary);
             // console.log(newState);
+            return newState;
+        case 'TOGGLE_HIDE_MODEL':
+            var newState = Object.assign({}, state);
+            var visible = action.visible;
+            newState.hideModelVisible = visible;
+            window.localStorage.setItem('DREAM_STATUS', newState.hideModelVisible);
+            return newState;
+        case 'TOGGLE_DOM_WINDOW_VISIBLE': 
+            var newState = Object.assign({}, state);
+            var visible = !!action.visible;
+            newState.domWindowVisible = visible;
             return newState;
         default:
             return state;
