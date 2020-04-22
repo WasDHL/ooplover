@@ -5,7 +5,7 @@ var path = require('path');
 var httpProxy = require('http-proxy');
 var proxy = httpProxy.createProxyServer();
 
-var port = 7777;
+var port = 7778;
 
 var mine = {
     "css": "text/css",

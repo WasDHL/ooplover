@@ -76,10 +76,10 @@ module.exports = {
         //   minimize: true
         // }),
         new HtmlWebpackPlugin({ template: 'src/index.html' }),
-        new CopyWebpackPlugin([{
-            from : path.join(__dirname, './src/static'),
-            to : 'static'
-        }]),
+        // new CopyWebpackPlugin([{
+        //     from : path.join(__dirname, './src/static'),
+        //     to : 'static'
+        // }]),
         new BundleAnalyzerPlugin()
     ],
     optimization: {
