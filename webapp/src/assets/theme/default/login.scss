@@ -12,9 +12,9 @@
 }
 
 .form-row { margin: 10px 4px; }
-.form-ipt { 
-    display: inline-block; width: 200px; text-align: center; 
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+.form-ipt {
+    display: inline-block; width: 200px; text-align: center;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
     // -webkit-user-select: none;
     -moz-user-focus: none;
     -moz-user-select: none;
@@ -33,6 +33,18 @@
 }
 .form-ipt:-ms-input-placeholder {
     // color: red;
+}
+.form-sel{
+    width: 200px;
+    height:24px;
+    line-height:24px;
+    background:#fff;
+    font-size:14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    outline: none;
+    text-align: center;
+    text-align-last:center;
 }
 .login-recommend {
     position: absolute; bottom: 0; width: 100%;

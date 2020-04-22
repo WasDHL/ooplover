@@ -34,7 +34,7 @@ const HomeBodyComponent = function (props) {
             <div className="body-wrap">
                 <div className="body-row">
                     <div className="banner-wrap v-m">
-                        <div className="banner-title" onClick={() => props.initData && props.initData()}>OOP Lover</div>
+                        <div className="banner-title" onClick={() => props.initData && props.initData()}>OOP Study</div>
                         <p className="">面向对象面相君，不负代码不负卿</p>
                     </div>
                     <img className="banner-avator v-m" src={props.userInfo && props.userInfo.id == 1 ? adimn1Avator : adimn2Avator}></img>

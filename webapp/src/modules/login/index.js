@@ -12,6 +12,10 @@ class LoginComponent extends Component {
         this.history = this.props.history;
 
         this.state = {
+            users:[
+              {id:1,name:'XHM'},
+              {id:2,name:'DHL'}
+            ],
             name: 'XHM', password: 'OOPLOVER_',
             errorMessage: null
         };
@@ -35,9 +39,19 @@ class LoginComponent extends Component {
                 <div className="v-m-element" style={{ textAlign: 'center' }}>
                     <div className="login-panel">
                         <div style={{ fontSize: '20px', color: '#555' }}>面 向 对 象 面 向 君</div>
-                        <div>
+                        <div>    
                             <div className="form-row">
-                                <input type='text' value={this.state.name} onChange={event => this.setState({name: event.target.value})} className="form-ipt" placeholder="USER NAME" />
+                               <select  className="form-sel"  defaultValue='' onChange={event => this.setState({name: event.target.value})}>
+                                {
+                                  this.state.users.map((i)=>{
+                                    return (
+                                      <option key={i.id} value={i.name}>
+                                          {i.name}
+                                      </option>
+                                    );
+                                  })
+                                 }
+                                </select>
                             </div>
                             <div className="form-row">
                                 <input type='text' value={this.state.password} onChange={event => this.setState({password: event.target.value})} className="form-ipt" placeholder="PASSWORD" />
