@@ -9,6 +9,7 @@ import LeftNav from './leftNav';
 // import DiaryItem from './diaryItem';
 // import EditDialog from './editDialog';
 // import DeleteAlert from './deleteAlert';
+import MessageList from './messageList';
 import MessageItem from './messageItem';
 
 const bannerImg = require('./../../assets/theme/default/images/banner.jpg');
@@ -34,7 +35,7 @@ const HomeBodyComponent = function (props) {
             <div className="body-wrap">
                 <div className="body-row">
                     <div className="banner-wrap v-m">
-                        <div className="banner-title" onClick={() => props.initData && props.initData()}>OOP Lover</div>
+                        <div className="banner-title" onClick={() => props.initData && props.initData()}>OOP Study</div>
                         <p className="">面向对象面相君，不负代码不负卿</p>
                     </div>
                     <img className="banner-avator v-m" src={props.userInfo && props.userInfo.id == 1 ? adimn1Avator : adimn2Avator}></img>
@@ -45,15 +46,8 @@ const HomeBodyComponent = function (props) {
                     <div style={{'textAlign': 'center'}} onClick={() => props.updateMessageNumLimit && props.updateMessageNumLimit()}>
                         <i className="fa fa-angle-double-up icon" aria-hidden="true" style={{ fontSize: "12px", color: "#a0a0a0" }}></i>
                     </div>
-                    <div>
-                    {
-                        props.messageList && props.messageList.map((message, idx) => (
-                            <div key={idx}>
-                                <MessageItem message={message} user={props.userMap && props.userMap[message.sendUserId]}></MessageItem>
-                            </div>
-                        ))
-                    }
-                    </div>
+                    <MessageList messageList={props.messageList} userMap={props.userMap}></MessageList>
+                    
                     <div style={{ marginTop: '20px' }}>
                         <SenderBox />
                     </div>
@@ -68,22 +62,33 @@ const ConnectedHomeBodyComponent = connectDataState(connectViewState(HomeBodyCom
 import { connectInitState, connectAsyncState } from './../common/connect';
 
 window['newMessageSendedEventBinded'] = false;
+window['connectSocketHBFlag'] = null;
 
 export default connectAsyncState(connectInitState(props => {
-    
+    let io = null;
 
-    if (!window['newMessageSendedEventBinded']) {
-        const io = socket(SocketApiPath);
+    let socketBind = function () {
+        // if (io && io.connected) { return; }
 
-        io.on('newMessageSended', function (message) {
+        io = socket(SocketApiPath);
+
+        var newMessageSendedCallback = function (message) {
             console.log('newMessageSended');
             console.log(message);
             props.pullReceiveMessageList && props.pullReceiveMessageList();
-        });
+        }
+
+        io.off('newMessageSended', newMessageSendedCallback);
+        io.on('newMessageSended', newMessageSendedCallback);
+    }
+    
+    if (!window['newMessageSendedEventBinded']) {
+        socketBind();
+        window.clearInterval(window['connectSocketHBFlag']);
+        // window['connectSocketHBFlag'] = window.setInterval(socketBind, 10000);
         window['newMessageSendedEventBinded'] = true;
     }
     
-
     var isLoading =
         // props && props.isPullingReceiveMessageList !== false ||
         props && props.isFetchingUsers !== false;

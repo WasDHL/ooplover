@@ -73,7 +73,10 @@ http.createServer(function (request, response) {
 
     if (pathname.indexOf('/api/') > -1) {
         // proxy.web(request, response, { target: 'http://localhost:9987'});
-        proxy.web(request, response, { target: 'http://101.132.177.143:9987'});
+        proxy.web(request, response, { target: 'http://192.168.30.102:9987'});
+        // proxy.web(request, response, { target: 'http://192.168.10.195:9987'});
+
+        // proxy.web(request, response, { target: 'http://101.132.177.143:9987'});
         return;
     }
 

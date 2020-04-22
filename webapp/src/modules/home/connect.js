@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchDiary, submitDiary, fetchDiaryList, deleteDiary, fetchDiaryDetail } from './../../model/actions/diary';
-import { pullReceiveMessageList, sendMessage, updateMessageNumLimit } from './../../model/actions/message';
+import { pullReceiveMessageList, sendMessage, updateMessageNumLimit, checkMessageReadedCondition } from './../../model/actions/message';
 
 export const connectViewState = connect(
     ({ viewState, dataState }) => ({
@@ -40,3 +40,9 @@ export const connectDataState = connect(
     dispatch => ({
     })
 );
+
+export const messageUpdateConnectDispatch = connect(null, dispatch => ({
+    checkMessageReaded: () => dispatch(checkMessageReadedCondition())
+}));
+
+

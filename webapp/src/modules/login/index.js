@@ -12,7 +12,7 @@ class LoginComponent extends Component {
         this.history = this.props.history;
 
         this.state = {
-            name: 'XHM', password: 'OOPLOVER_',
+            name: 'DHL', password: 'OOPLOVER_',
             errorMessage: null
         };
     }
