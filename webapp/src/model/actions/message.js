@@ -7,11 +7,21 @@ const actionMap = {
         return async function (dispatch, getState) {
             var state = getState();
             var messageNumLimit = state && state.messageState && state.messageState.messageNumLimit;
+            var userInfo = state.dataState.userInfo;
+            var userId = userInfo && userInfo.id;
             // var response = await get('/diary/list');
             var response = await dispatch(postAction('/message/pullReceive', { numLimit: messageNumLimit || 10 }));
-            response.success && dispatch({ type: 'FETCHED_MESSAGELIST', messageList: (response.data || []).map(message => Object.assign({}, message, {
+            var newMessageList = (response.data || []).map(message => Object.assign({}, message, {
                 content: Base64.decode(message.content || '')
-            })) });
+            }));
+            var notReadedMessageList = newMessageList.filter(function (message) { return message.sendUserId !== userId && !message.readed });
+
+            console.log("---notReadedMessageList---");
+            console.log(notReadedMessageList);
+
+            response.success && dispatch({ type: 'FETCHED_MESSAGELIST', messageList: newMessageList });
+            // response.success && dispatch({ type: 'UPDATE_DIDNOT_READED_STATUS', notReadedMessageList: notReadedMessageList });
+            response.success && dispatch({ type: 'UPDATE_DIDNOT_READED_STATUS', hasDidNotReadMessage: notReadedMessageList && notReadedMessageList.length > 0 });
             return response.data;
         }
     },

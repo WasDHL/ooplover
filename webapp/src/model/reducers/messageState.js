@@ -1,7 +1,8 @@
 const InitialState = {
     userMap: [],
     messageList: [],
-    messageNumLimit: 10
+    messageNumLimit: 10,
+    hasDidNotReadMessage: false
 };
 
 export default function (state = InitialState, action) {
@@ -12,6 +13,8 @@ export default function (state = InitialState, action) {
             var messageList = action.messageList || [];
             messageList = messageList.sort(function (l, r) { return l.createTime > r.createTime ? 1 : -1; })
             return Object.assign({}, state, { messageList: messageList });
+        case 'UPDATE_DIDNOT_READED_STATUS': 
+            return Object.assign({}, state, { hasDidNotReadMessage: !!action.hasDidNotReadMessage });
         case 'FETCHED_USERS':
             var userMap = {};
             (action.users || []).map(user => (userMap[user.id] = user));

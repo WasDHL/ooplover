@@ -4,7 +4,7 @@ const InitialState = {
     editDialogToggle: false,
     currentEditDiary: null,
     currentDeleteDiary: null,
-    hideModelVisible: window.localStorage.getItem('DREAM_STATUS'),
+    hideModelVisible: window.localStorage.getItem('DREAM_STATUS') === 'expanded' ? 'expanded' : 'collapsed',
     domWindowVisible: true // 当前窗口是否可见
 };
 

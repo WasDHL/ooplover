@@ -88,20 +88,22 @@ export default connectAsyncState(connectInitState(props => {
         // window['connectSocketHBFlag'] = window.setInterval(socketBind, 10000);
         window['newMessageSendedEventBinded'] = true;
     }
-    
-    var isLoading =
+    // var isLoading = true;
+    var isLoading = 
         // props && props.isPullingReceiveMessageList !== false ||
+        props && props.isFetchingUserInfo !== false ||
         props && props.isFetchingUsers !== false;
     return (
-        <div>
+        <div style={{ position: 'relative', paddingBottom: '20px' }}>
             <InitialTrigger initialAction={() => props.initUserInfo && props.initUserInfo()} />
-            <InitialTrigger initialAction={() => props.pullReceiveMessageList && props.pullReceiveMessageList()} />
+            { !isLoading && <InitialTrigger initialAction={() => props.pullReceiveMessageList && props.pullReceiveMessageList()} /> }
             <InitialTrigger initialAction={() => props.startHBPull && props.startHBPull()} />
             <InitialTrigger initialAction={() => props.fetchUsers && props.fetchUsers()} />
             {/* <InitialTrigger initialAction={() => props.initDiaryList && props.initDiaryList()} /> */}
 
             { isLoading && <div className="loading">LOADING......</div> }
             { !isLoading && <ConnectedHomeBodyComponent /> }
+            <div style={{ position: 'absolute', bottom: '0px', textAlign: 'center', width: '100%', fontSize: '12px', color: 'gray' }}>岁月静好</div>
         </div>
     );
 }));

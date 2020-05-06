@@ -55,7 +55,7 @@ class LoginComponent extends Component {
                                 </select>
                             </div>
                             <div className="form-row">
-                                <input type='text' value={this.state.password} onChange={event => this.setState({password: event.target.value})} className="form-ipt" placeholder="PASSWORD" />
+                                <input type='password' value={this.state.password} onChange={event => this.setState({password: event.target.value})} className="form-ipt" placeholder="PASSWORD" />
                             </div>
                         </div>
                         <div>

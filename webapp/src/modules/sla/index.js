@@ -1,4 +1,12 @@
 import React, { Component } from 'react';
+import { connectStatus } from './connect';
+
+const NewMessageNotifyCicle = connectStatus(function (props) {
+   // return (<span>{props.hasDidNotReadMessage ? 'TRUE' : 'FALSE'}</span>);
+   return (<span style={{
+      position: 'absolute', display: 'block', width: '4px', height: '4px', borderRadius: '2px', top: '50%', marginTop: '-2px', right: 0, background: props.hasDidNotReadMessage ? '#000' : 'transparent'
+   }}></span>);
+});
 
 export default class SLAHome extends Component {
     constructor (props) {
@@ -20,7 +28,7 @@ export default class SLAHome extends Component {
             <div onClick={event => this.uselessExpand(event)}>
                 <div className="swiper-img" onClick={event => this.expand(event, 3)}></div>
                 <div className="test-info">
-                  <div className="title">SLA Monitor 测试页</div>
+                  <div className="title" style={{ position: 'relative' }}>SLA Monitor 测试页 <NewMessageNotifyCicle /></div>
                   <div><span>面向对象(Object Oriented,OO)</span>是 <b>软件开发方法</b>。首先定义一个对象a，有一个属性x，值为1。接着让b = a，这一步的结果就是a和b指向了同一个对象。在内存中，对象的存储和基本数据类型不同。基本数据类型直接保存在栈里，a = 1，b = 1，在栈里会保存两份1，分别赋值给a和b。修改a或b，对另一个变量不会有什么影响。对象则不然，变量a和b如果被赋值对象，a和b实际上保存的只是对象的地址，而且a和b还是被存储在栈里，同时a和b的地址是相同的。但对象是在堆里保存，且只保存一份，对象的地址就是a和b的值，a和b都指向同一个对象。这与C里面的指针类似，修改指向同一个对象的任何一个变量，与之引用同一对象变量很快就会发生同样的变化。所以现在的情况就是，a和b都指向了堆中的一个对象，这个对象的属性x值是1。那么a.x = 1，b.x自然也等于1。接下来发生一件事情，a修改了对象的x属性为2，这个变化反映到了堆中：
 看，a和b还是指向了同一个对象，只不过对象中的x属性值变成了2。这一变化b很快就发现了，所以你再去访问b.x，实际上就是访问堆中的对象的x属性，也就是2。再后来，为a赋值了一个新的对象，虽然它也有一个属性x，但它确实是一个新对象！那么内存堆中发生了什么呢？首先，堆中原有的对象（x = 2的那个）还在那里。因为新建了一个对象（x = 3的），堆中就会出现一个新的对象，与原来的对象毫无关系。同时，b并没有变化，它还指向原有的对象（x = 2），但a指向原来的对象的地址却发生了变化，它指向了x = 3的这个新对象。a的地址变了，同时a和原来的对象也没有指向关系了，它指向了新的对象，这个新对象的x = 3。而b对象没有任何变化，它还坚守着自己的对象，对象的x属性是2。</div>
                   <div className="question">
