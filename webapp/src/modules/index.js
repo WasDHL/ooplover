@@ -48,7 +48,7 @@ function RootModule (props) {
     // var collapse = function () { window.CollapseDream(); }
     // var status = window.GetDreamStatus();
 
-    var expand = function () { props.expandDream && props.expandDream(); }
+    var expand = function () { props.expandDream && props.expandDream.apply(null, arguments); }
     var collapse = function () { 
         props.collapseDream && props.collapseDream(); 
     }

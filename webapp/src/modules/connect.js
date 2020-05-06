@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { expandDream, collapseDream, toggleDomWindowVisible } from '../model/actions/hideModel';
+import { tryExpandDream, expandDream, collapseDream, toggleDomWindowVisible } from '../model/actions/hideModel';
 
 export const connectAppState = connect((state) => {
     return {
@@ -9,7 +9,7 @@ export const connectAppState = connect((state) => {
 }, null);
 
 export const connectAppDispatch = connect(null, (dispatch) => ({
-    expandDream: () => dispatch(expandDream()),
+    expandDream: (tryOpen, btnKey) => dispatch(tryExpandDream(tryOpen, btnKey)),
     collapseDream: () => dispatch(collapseDream()),
     toggleDomWindowVisible: visible => dispatch(toggleDomWindowVisible(visible))
 }));
