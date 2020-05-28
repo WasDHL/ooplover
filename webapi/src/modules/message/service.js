@@ -38,3 +38,6 @@ export const readedMessage = async function (ids) {
     }
 }
 
+export const removeAll = async function () {
+    return await Message.update({ status: STATE.DELETED }, { where: { status: STATE.NORMAL }, raw: true });
+}

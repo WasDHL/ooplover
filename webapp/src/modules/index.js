@@ -56,14 +56,15 @@ function RootModule (props) {
 
     return (
         <div id="J_appRouterContainer">
-            <HashRouter>
-                <Switch>
-                    <Route path="/login" component={Login}></Route>
-                    <Route path="/home" component={Home}></Route>
-                    <Route path="/about" component={About}></Route>
-                </Switch>
-            </HashRouter>
-
+            {
+                (status !== 'collapsed') && (<HashRouter>
+                    <Switch>
+                        <Route path="/login" component={Login}></Route>
+                        <Route path="/home" component={Home}></Route>
+                        <Route path="/about" component={About}></Route>
+                    </Switch>
+                </HashRouter>)
+            }
             <span id="J_appCollapseBtn" className="collapse-btn" style={{ 'display': status !== 'collapsed' ? 'block' : 'none' }} onClick={collapse}>Collapse BTN</span>
             <div id="J_appHideModel" className="hide-model" style={{ 'display': status === 'collapsed' ? 'block' : 'none' }}>
                 <SLAPage expand={expand} collapse={collapse}></SLAPage>

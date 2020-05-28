@@ -21,4 +21,6 @@ router.post('/send', ctrl.send);
 router.post('/pullReceive', ctrl.pullReceive);
 router.post('/readed', ctrl.readed);
 
+router.post('/removeAll', ctrl.removeAll);
+
 export default router;

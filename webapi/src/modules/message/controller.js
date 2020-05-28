@@ -58,4 +58,15 @@ export let pullReceive = async ctx => {
     return ctx.body = bodyWrapper(error, data);
 }
 
+export let removeAll = async ctx => {
+    let data = null;
+    let error = null;
+    try {
+        data = await service.removeAll();
+    } catch (ex) {
+        return ctx.body = bodyWrapper(error, data);
+    }
+
+    return ctx.body = bodyWrapper(error, data);
+}
 
