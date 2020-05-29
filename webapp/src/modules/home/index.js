@@ -23,9 +23,10 @@ import socket from 'socket.io-client';
 
 const HomeBodyComponent = function (props) {
     return (
-        <div className="home-page">
+        <div className="home-page theme">
+            <div className="theme-mask"></div>
             <div style={{ padding: "30px 20px", position: 'relative' }}>
-                <i className="fa fa-bars icon" aria-hidden="true" style={{ fontSize: "20px", color: "#a0a0a0" }} onClick={() => props.toggleLeftNav && props.toggleLeftNav()}></i>
+                <i className="fa fa-bars icon" aria-hidden="true" style={{ fontSize: "20px", color: "#a0a0a0"}} onClick={() => props.toggleLeftNav && props.toggleLeftNav()}></i>
                 <span style={{ position: 'absolute', right: '40px', top: '35px', color: '#a0a0a0' }}>晚安说</span>
             </div>
             <Modal active={props.leftNavToggle}>
@@ -35,8 +36,8 @@ const HomeBodyComponent = function (props) {
             <div className="body-wrap">
                 <div className="body-row">
                     <div className="banner-wrap v-m">
-                        <div className="banner-title" onClick={() => props.initData && props.initData()}>OOP Study</div>
-                        <p className="">面向对象面相君，不负代码不负卿</p>
+                        <div className="banner-title theme-font" onClick={() => props.initData && props.initData()}>OOP Study</div>
+                        <p className="theme-font">面向对象面相君，不负代码不负卿</p>
                     </div>
                     <img className="banner-avator v-m" src={props.userInfo && props.userInfo.id == 1 ? adimn1Avator : adimn2Avator}></img>
 
@@ -47,7 +48,7 @@ const HomeBodyComponent = function (props) {
                         <i className="fa fa-angle-double-up icon" aria-hidden="true" style={{ fontSize: "12px", color: "#a0a0a0" }}></i>
                     </div>
                     <MessageList messageList={props.messageList} userMap={props.userMap}></MessageList>
-                    
+
                     <div style={{ marginTop: '20px' }}>
                         <SenderBox />
                     </div>

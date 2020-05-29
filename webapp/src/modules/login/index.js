@@ -35,23 +35,23 @@ class LoginComponent extends Component {
 
     render () {
         return (
-            <div className="login-page v-m-container">
+            <div className="login-page v-m-container theme">
                 <div className="v-m-element" style={{ textAlign: 'center' }}>
                     <div className="login-panel">
-                        <div style={{ fontSize: '20px', color: '#555' }}>面 向 对 象 面 向 君</div>
+                        <div class="login-title theme-font">面 向 对 象 面 向 君</div>
                         <div>
                             <div className="form-row">
-                               <span className='form-ipt simulate-sel'>{this.state.name}</span>
-                               <select  className="form-sel"  defaultValue='' onChange={event => this.setState({name: event.target.value})}>
-                                {
-                                  this.state.users.map((i)=>{
-                                    return (
-                                      <option key={i.id} value={i.name}>
-                                          {i.name}
-                                      </option>
-                                    );
-                                  })
-                                 }
+                                <span className='form-ipt simulate-sel'>{this.state.name}</span>
+                                <select  className="form-sel"  defaultValue='' onChange={event => this.setState({name: event.target.value})}>
+                                    {
+                                        this.state.users.map((i)=>{
+                                            return (
+                                                <option key={i.id} value={i.name}>
+                                                    {i.name}
+                                                </option>
+                                            );
+                                        })
+                                    }
                                 </select>
                             </div>
                             <div className="form-row">
@@ -66,7 +66,7 @@ class LoginComponent extends Component {
                             { this.state.errorMessage && <span style={{ color: 'red', fontSize: '13px' }}>{this.state.errorMessage.message}</span> }
                         </div>
                     </div>
-                    <div className="login-recommend">好好学习，天天向上... </div>
+                    <div className="login-recommend theme-font">好好学习，天天向上... </div>
                 </div>
             </div>
         );

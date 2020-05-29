@@ -36,7 +36,7 @@ export default connectViewState(class SenderBox extends React.Component {
     render () {
         return (
             <div>
-            <div className="sender-box">
+            <div className="sender-box theme-font">
                 <div className="sender-editor" contentEditable="true" style={{ minHeight: '40px' }} id="J_senderEditorIpt" onKeyPress={(event) => this.triggerKeyPress(event)}>
 
                 </div>

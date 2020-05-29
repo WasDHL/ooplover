@@ -8,16 +8,16 @@ export default function MessageItem (props) {
     var message = props.message;
     var user = props.user;
     return (
-        <div className="message-item">
-            <span className="unread-cicle" style={{display: message.readed ? 'none' : 'block'}}>
+        <div className="message-item theme-font">
+            <span className="unread-cicle theme-font" style={{display: message.readed ? 'none' : 'block'}}>
             </span>
             <div className="message-avator">
                 <img src={user && user.id == 1 ? adimn1Avator : adimn2Avator} />
             </div>
-            <div className="message-header">
+            <div className="message-header theme-font">
                 <span className="send-user">{user.name}</span>  <span className="send-date">{moment(message.createTime * 1000).format('YYYY-MM-DD HH:mm:ss')}</span>
             </div>
-            <div className="message-content">
+            <div className="message-content theme-font">
                 {message.content}
 
                 <span className="readed-status" style={{display: 'none'}}>
