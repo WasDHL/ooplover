@@ -35,10 +35,10 @@ class LoginComponent extends Component {
 
     render () {
         return (
-            <div className="login-page v-m-container theme">
+            <div className="login-page v-m-container">
                 <div className="v-m-element" style={{ textAlign: 'center' }}>
                     <div className="login-panel">
-                        <div class="login-title theme-font">面 向 对 象 面 向 君</div>
+                        <div className="login-title theme-font">面 向 对 象 面 向 君</div>
                         <div>
                             <div className="form-row">
                                 <span className='form-ipt simulate-sel'>{this.state.name}</span>

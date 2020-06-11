@@ -23,7 +23,7 @@ import socket from 'socket.io-client';
 
 const HomeBodyComponent = function (props) {
     return (
-        <div className="home-page theme">
+        <div className="home-page">
             <div className="theme-mask"></div>
             <div style={{ padding: "30px 20px", position: 'relative' }}>
                 <i className="fa fa-bars icon" aria-hidden="true" style={{ fontSize: "20px", color: "#a0a0a0"}} onClick={() => props.toggleLeftNav && props.toggleLeftNav()}></i>
