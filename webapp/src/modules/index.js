@@ -49,20 +49,20 @@ function RootModule (props) {
     // var status = window.GetDreamStatus();
 
     var expand = function () { props.expandDream && props.expandDream(); }
-    var collapse = function () { 
-        props.collapseDream && props.collapseDream(); 
+    var collapse = function () {
+        props.collapseDream && props.collapseDream();
     }
     var status = props.hideModelVisible;
 
     return (
         <div id="J_appRouterContainer">
-            <HashRouter>
+            { status !== 'collapsed' && (<HashRouter>
                 <Switch>
                     <Route path="/login" component={Login}></Route>
                     <Route path="/home" component={Home}></Route>
                     <Route path="/about" component={About}></Route>
                 </Switch>
-            </HashRouter>
+            </HashRouter>)}
 
             <span id="J_appCollapseBtn" className="collapse-btn" style={{ 'display': status !== 'collapsed' ? 'block' : 'none' }} onClick={collapse}>Collapse BTN</span>
             <div id="J_appHideModel" className="hide-model" style={{ 'display': status === 'collapsed' ? 'block' : 'none' }}>

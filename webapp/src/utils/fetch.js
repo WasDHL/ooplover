@@ -22,7 +22,7 @@ const vanillaFetch = window.fetch && typeof window.fetch == 'function';
 
 const fetchAuthenticationReject = function (response) {
     if (response.status == '401') {
-        window.location.href = '/#/login';
+        window.location.href = window.location.pathname + '#/login';
         throw {'code': '401'};
         return null;
     }

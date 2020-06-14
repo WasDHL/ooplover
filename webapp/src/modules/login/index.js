@@ -16,7 +16,7 @@ class LoginComponent extends Component {
               {id:1,name:'XHM'},
               {id:2,name:'DHL'}
             ],
-            name: 'XHM', password: 'OOPLOVER_',
+            name: 'XHM', password: 'OOPSTUDY_',
             errorMessage: null
         };
     }
@@ -38,7 +38,7 @@ class LoginComponent extends Component {
             <div className="login-page v-m-container">
                 <div className="v-m-element" style={{ textAlign: 'center' }}>
                     <div className="login-panel">
-                        <div className="login-title theme-font">面 向 对 象 面 向 君</div>
+                        <div className="login-title">面 向 对 象 面 向 君</div>
                         <div>
                             <div className="form-row">
                                 <span className='form-ipt simulate-sel'>{this.state.name}</span>
@@ -66,7 +66,7 @@ class LoginComponent extends Component {
                             { this.state.errorMessage && <span style={{ color: 'red', fontSize: '13px' }}>{this.state.errorMessage.message}</span> }
                         </div>
                     </div>
-                    <div className="login-recommend theme-font">好好学习，天天向上... </div>
+                    <div className="login-recommend">好好学习，天天向上... </div>
                 </div>
             </div>
         );
