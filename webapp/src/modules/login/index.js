@@ -16,7 +16,7 @@ class LoginComponent extends Component {
               {id:1,name:'XHM'},
               {id:2,name:'DHL'}
             ],
-            name: 'XHM', password: 'OOPLOVER_',
+            name: 'XHM', password: 'OOPSTUDY_',
             errorMessage: null
         };
     }
@@ -38,20 +38,20 @@ class LoginComponent extends Component {
             <div className="login-page v-m-container">
                 <div className="v-m-element" style={{ textAlign: 'center' }}>
                     <div className="login-panel">
-                        <div style={{ fontSize: '20px', color: '#555' }}>面 向 对 象 面 向 君</div>
+                        <div className="login-title">面 向 对 象 面 向 君</div>
                         <div>
                             <div className="form-row">
-                               <span className='form-ipt simulate-sel'>{this.state.name}</span>
-                               <select  className="form-sel"  defaultValue='' onChange={event => this.setState({name: event.target.value})}>
-                                {
-                                  this.state.users.map((i)=>{
-                                    return (
-                                      <option key={i.id} value={i.name}>
-                                          {i.name}
-                                      </option>
-                                    );
-                                  })
-                                 }
+                                <span className='form-ipt simulate-sel'>{this.state.name}</span>
+                                <select  className="form-sel"  defaultValue='' onChange={event => this.setState({name: event.target.value})}>
+                                    {
+                                        this.state.users.map((i)=>{
+                                            return (
+                                                <option key={i.id} value={i.name}>
+                                                    {i.name}
+                                                </option>
+                                            );
+                                        })
+                                    }
                                 </select>
                             </div>
                             <div className="form-row">

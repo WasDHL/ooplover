@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connectStatus } from './connect';
+import { connectStatus, connectDispatch } from './connect';
 
 const NewMessageNotifyCicle = connectStatus(function (props) {
    // return (<span>{props.hasDidNotReadMessage ? 'TRUE' : 'FALSE'}</span>);
@@ -8,9 +8,10 @@ const NewMessageNotifyCicle = connectStatus(function (props) {
    }}></span>);
 });
 
-export default class SLAHome extends Component {
+export default connectDispatch(class SLAHome extends Component {
     constructor (props) {
         super(props);
+
     }
 
     expand (e, btnKey) {
@@ -51,4 +52,4 @@ export default class SLAHome extends Component {
            </div>
         )
     }
-}
+})

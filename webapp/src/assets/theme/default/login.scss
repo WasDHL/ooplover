@@ -3,12 +3,16 @@
 
     .btn { cursor: pointer; display: inline-block; padding: 4px 8px; color: #333; border-radius: 2px; margin: 0 20px; }
     .btn:hover { background: #e0e0e0; }
-}
 
+}
 .login-panel {
     max-width: 400px;
     // position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto;
     display: inline-block;
+    .login-title{
+        font-size: 20px;
+        color: #555;
+    }
 }
 
 .form-row { margin: 10px 4px; position: relative;}
@@ -22,6 +26,7 @@
     border: 1px solid #e0e0e0;
     border-radius: 2px;
     outline: none;
+    background:transparent;
 }
 
 .form-ipt::-webkit-input-placeholder {
@@ -61,6 +66,6 @@
     left:0;
 }
 .login-recommend {
-    position: absolute; bottom: 0; width: 100%;
+    position: absolute; bottom:10px; width: 100%;
     font-size: 12px; color: #777; text-align: center;
 }

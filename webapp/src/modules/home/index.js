@@ -24,8 +24,9 @@ import socket from 'socket.io-client';
 const HomeBodyComponent = function (props) {
     return (
         <div className="home-page">
+            <div className=""></div>
             <div style={{ padding: "30px 20px", position: 'relative' }}>
-                <i className="fa fa-bars icon" aria-hidden="true" style={{ fontSize: "20px", color: "#a0a0a0" }} onClick={() => props.toggleLeftNav && props.toggleLeftNav()}></i>
+                <i className="fa fa-bars icon" aria-hidden="true" style={{ fontSize: "20px", color: "#a0a0a0"}} onClick={() => props.toggleLeftNav && props.toggleLeftNav()}></i>
                 <span style={{ position: 'absolute', right: '40px', top: '35px', color: '#a0a0a0' }}>晚安说</span>
             </div>
             <Modal active={props.leftNavToggle}>
@@ -47,7 +48,7 @@ const HomeBodyComponent = function (props) {
                         <i className="fa fa-angle-double-up icon" aria-hidden="true" style={{ fontSize: "12px", color: "#a0a0a0" }}></i>
                     </div>
                     <MessageList messageList={props.messageList} userMap={props.userMap}></MessageList>
-                    
+
                     <div style={{ marginTop: '20px' }}>
                         <SenderBox />
                     </div>
@@ -81,15 +82,15 @@ export default connectAsyncState(connectInitState(props => {
         io.off('newMessageSended', newMessageSendedCallback);
         io.on('newMessageSended', newMessageSendedCallback);
     }
-    
+
     if (!window['newMessageSendedEventBinded']) {
         socketBind();
         window.clearInterval(window['connectSocketHBFlag']);
         // window['connectSocketHBFlag'] = window.setInterval(socketBind, 10000);
         window['newMessageSendedEventBinded'] = true;
     }
-    // var isLoading = true;
-    var isLoading = 
+
+    var isLoading =
         // props && props.isPullingReceiveMessageList !== false ||
         props && props.isFetchingUserInfo !== false ||
         props && props.isFetchingUsers !== false;
