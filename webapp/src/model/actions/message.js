@@ -16,8 +16,12 @@ const actionMap = {
         }
     },
     sendMessage: function (message) {
-        return async function (dispatch) {
-            var response = await dispatch(postAction('/message/send', { content: message }));
+        return async function (dispatch, getState) {
+            var state = getState();
+            var dataState = state.dataState || {};
+            var userId = dataState.userInfo && dataState.userInfo.id;
+
+            var response = await dispatch(postAction('/message/send', { content: message, sendUserId: userId }));
             // response.success && dispatch(pullReceiveMessageList());
             return response.data;
         }

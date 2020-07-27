@@ -21,7 +21,7 @@ const app = new Koa();
 
 app.use(
 	jwtKoa({ secret: config.secret, cookie: config.jwtCookieName })
-	.unless({ path: [/^\/api\/auth\/login/, /^\/api\/auth\/create/] })
+	.unless({ path: [/^\/api\/auth\/login/, /^\/api\/auth\/create/, /^\/api\/message\/send/] })
 );
 
 //body解析
