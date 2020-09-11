@@ -9,7 +9,7 @@ export default function MessageItem (props) {
     var user = props.user;
     return (
         <div className="message-item theme-font">
-            <span className="unread-cicle theme-font" style={{display: message.readed ? 'none' : 'block'}}>
+            <span className="unread-cicle theme-font" style={{display: message.readed ? 'none' : 'none'}}>
             </span>
             <div className="message-avator">
                 <img src={user && user.id == 1 ? adimn1Avator : adimn2Avator} />
