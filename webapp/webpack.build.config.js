@@ -95,11 +95,12 @@ module.exports = {
         //     output : {
         //         comments : false
         //     },
-        //     compress: { 
-        //         warnings: false 
+        //     compress: {
+        //         warnings: false
         //     }
         // })
         // new BundleAnalyzerPlugin()
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
     ],
     optimization: {
         minimize: true,
